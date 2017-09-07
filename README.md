@@ -1,4 +1,4 @@
-#ListView（活動列表）
+# ListView（活動列表）
 
 ListView有很多種也是製作專案很常用到的東西，今天要講解的部分是稍微複雜的利用BaseAdapter來達成客製化的ListView。
 
