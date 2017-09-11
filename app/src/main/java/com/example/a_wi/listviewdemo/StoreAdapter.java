@@ -23,12 +23,14 @@ public class StoreAdapter extends BaseAdapter
 
     public View.OnClickListener mButtonOnClickListen;
 
+    //宣告內容物
     static class ViewHolder {
         TextView mTitle,mText;
         ImageView mIcon;
         Button mButton;
     }
 
+    //利用Adapter回傳按鈕監聽事件
     public StoreAdapter(Context context, ArrayList<StroeData> listItem,
                         View.OnClickListener onClick) {
         mInflater = LayoutInflater.from(context);
@@ -38,7 +40,7 @@ public class StoreAdapter extends BaseAdapter
 
     @Override
     public int getCount() {
-        return mlistItem.size();
+        return mlistItem.size();//回傳ArrayList有幾個
     }
 
     @Override
@@ -51,9 +53,12 @@ public class StoreAdapter extends BaseAdapter
         return position;
     }
 
+    //1.item到哪個位置 2.item所使用的view 3.item的parent
+    /**Holder是回收機制的精華*/
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null) {
+        if(convertView == null) //判斷View是否被初始化過
+        {
             convertView = mInflater.inflate(R.layout.item, null);
 
             holder = new ViewHolder();
@@ -62,7 +67,7 @@ public class StoreAdapter extends BaseAdapter
             holder.mIcon = (ImageView)convertView.findViewById(R.id.item_imageView);
             holder.mButton = (Button)convertView.findViewById(R.id.button);
 
-            convertView.setTag(holder);
+            convertView.setTag(holder);//將item建立好的物件存入holder中
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
